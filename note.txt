@@ -1,0 +1,21 @@
+一、目录说明
+  -- controller ：控制器目录 
+  -- model: 数据模型目录
+  -- tpl: 模板目录（存放HTML等模板文件）
+  -- SpeedPHP : speedphp框架目录（不要更改）
+  -- tmp : 临时文件目录
+  -- uploads : 上传文件目录
+  -- public : 共有样式,存放CSS、JS、图片、媒体文件等
+
+
+
+控制器、数据模型和模板文件命名：
+  --  以 admin 开头的 方法 action（如: admin_index )），均要身份验证，且任意数据操作就要以 POST 方法;
+  --  以 ajax 开头的 方法，均返回少量数据，且 后面接上 返回类型，如（ ajax_html_test ），即 ajax + 类型 + action;
+  --  控制器 AppController 定义了部分全局模板变量
+  
+
+  --  数据模型 以 M_ （如: M_User ），首字母均大写;
+  --  模板命名（HTML文件）： 模板目录/ 控制器 / action.HTML;
+  --  
+

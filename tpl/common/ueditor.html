@@ -1,0 +1,30 @@
+<script type="text/javascript" src="<{$js_path}>/ueditor/editor_config.js"></script>
+<script type="text/javascript" src="<{$js_path}>/ueditor/editor_all_min.js"></script>
+<script type="text/javascript">
+Modernizr.load('<{$js_path}>/ueditor/themes/default/ueditor.css');
+</script>
+
+<script type="text/javascript">
+	
+	(function () {
+		if (!document.getElementById('Editor')) {
+			return;	
+		}
+		var initUEditor = function () {
+			var editor = new baidu.editor.ui.Editor();
+	    	editor.render("Editor");	
+		};
+		if (typeof jQuery != 'undefined') {
+			jQuery(initUEditor);
+		} else if(typeof window.onload != 'function') {
+			window.onload = initUEditor;
+		} else {
+			var tempEvent = window.onload;
+			window.onload = function () {
+				tempEvent();
+				initUEditor();
+			};
+		}
+	})();
+	
+</script>

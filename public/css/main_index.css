@@ -1,0 +1,288 @@
+/* 前台网站通用部分 */
+a, span, time, li {
+	color: #5C5C5C;
+}
+
+a:active {
+	position: relative;
+	top: 2px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Microsoft YaHei, Arial;
+	color: #000;
+}
+
+body {
+	min-width: 960px;
+	background: url(../images/bg.png) repeat #eeeeee;
+}
+
+body > header .innerContainer, body > section .innerContainer, body > footer .innerContainer {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+}
+
+/* =header */
+body > header {
+	/* Tell me again why using gradients is better than an image? */
+    background: -moz-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#1f1f1f), color-stop(2.5%,#424242), color-stop(5%,#1f1f1f), color-stop(95%,#313131), color-stop(97.5%,#141414), to(#313131));
+    background: -webkit-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: -o-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: -ms-linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+    background: linear-gradient(top, #1f1f1f 0%, #424242 2.5%, #1f1f1f 5%, #313131 95%, #141414 97.5%, #313131 100%);
+
+    /* Wishful thinking: */
+    background: gradient(top, #1f1f1f:0, #424242:2.5, #1f1f1f:5, #313131:95, #141414:97.5, #313131));
+	background: #333;
+
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+	height: 50px;
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+}
+body > header .innerContainer {
+
+}
+body > header .innerContainer .logo {
+}
+body > header .innerContainer .logo h1 {
+	text-indent: -9999em;
+}
+body > header .innerContainer nav {
+	position: absolute;
+    left: 200px;
+    top: 0;
+}
+body > header .innerContainer nav li {
+	float: left;
+	display: inline;
+	height: 50px;
+	overflow: hidden;
+}
+body > header .innerContainer nav li a {
+	padding: 15px;
+	color: #aaa;
+	font: 16px/1.5 Microsoft YaHei;
+	display: block;
+	transition: .2s all;
+	-moz-transition: .2s all;
+	-webkit-transition: .2s all;
+	-ms-transition: .2s all;
+}
+body > header .innerContainer nav li.active a, 
+body > header .innerContainer nav li a:hover {
+	color: #fff;
+	background: #535353;
+}
+body > header .innerContainer .searchBox {
+	position: absolute;
+	right: 180px;
+	top: 13px;
+}
+body > header .innerContainer .searchBox input {
+	height: 16px;
+    font: 14px/1.5 Microsoft YaHei;
+    border: none;
+    padding: 7px;
+    border-radius: 3px;
+}
+
+
+/* =section.mainContent */
+body > section {
+	padding-top: 70px;
+	position: relative;
+}
+
+body > section .innerContainer {
+	background: #fff;
+	border-radius: 3px;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+	border: 1px solid #ccc;
+}
+
+body > section .articleList {
+	width: 66%;
+}
+body > section .articleList li {
+}
+body > section .articleList li article {
+	padding: 20px;
+	border-bottom: 3px solid #41b7d8;
+}
+body > section .articleList li:nth-last-of-type(1) article {
+	border-bottom: none;
+}
+body > section .articleList li article h2 {
+	color: #000;
+	font: 22px/1.75 Microsoft YaHei;
+}
+body > section .articleList li article h2 span {
+	color: #d28181;
+}
+body > section .articleList li article h2 a {
+	color: #000;
+	padding: 3px 5px 3px 3px;
+}
+body > section .articleList li article h2 a:hover {
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, .2);
+}
+body > section .articleList li article h2 a:active {
+	background: #ccc;
+}
+
+body > section .articleList li article .articleDetail span, 
+body > section .articleList li article .articleDetail time {
+	padding-left: 20px;
+	background: url(../images/article_icon_sprite.png) no-repeat;
+	font: 13px/1.5 Helvetica, Arial;
+	margin-left: 20px;
+}
+body > section .articleList li article .articleDetail span a {
+}
+body > section .articleList li article .articleDetail span a:hover {
+	text-decoration: underline;
+	color: #4CC1E7;
+}
+body > section .articleList li article .articleDetail span.author {
+	background-position: 0 0;
+}
+body > section .articleList li article .articleDetail time {
+	background-position: 0 -30px;
+}
+body > section .articleList li article .articleDetail span.readCount {
+	background-position: 0 -60px;
+}
+
+body > section .articleList li article .articleContent {
+	margin-top: 15px;
+	padding: 10px 20px;
+}
+body > section .articleList li article .articleContent p {
+	line-height: 2em;
+	text-indent: 2em;
+	font-size: 14px;
+	margin-top: 1em;
+}
+body > section .articleList li article .articleContent li {
+	list-style: decimal;
+	margin: 8px 0 8px 60px;
+	font-size: 14px;
+}
+body > section .articleList li article a.readButton {
+	background: #41b7d8;
+	padding: 7px 15px;
+	font-size: 12px;
+	color: #fff;
+	border-radius: 3px;
+	display: block;
+	margin: 10px 0 0 20px;
+	width: 24px;
+}
+
+/* pageNav */
+body > section .pageNav {
+	margin: 20px 0px 4em 25%;
+}
+body > section .pageNav ul {
+	float: left;
+}
+body > section .pageNav li {
+	float: left;
+	display: inline;
+	margin: 5px 10px;
+	font-size: 14px;
+}
+body > section .pageNav li a {
+	padding: 8px 12px;
+	border-radius: 3px;
+	transition: .2s all;
+	-moz-transition: .2s all;
+	-webkit-transition: .2s all;
+	-ms-transition: .2s all;
+}
+body > section .pageNav li.active a,
+body > section .pageNav li a:hover {
+	background: #c5ebf5;
+	position: relative;
+	top: -2px;
+}
+body > section .pageNav .prevPage, 
+body > section .pageNav .nextPage {
+	float: left;
+	margin: 0px 10px;
+	padding: 8px 12px;
+	background-color: #E95C33;
+	border-radius: 3px;
+	font-size: 12px;
+	color: #fff;
+	position: relative;
+	top: -2px;
+	transition: .2s all;
+	-moz-transition: .2s all;
+	-webkit-transition: .2s all;
+	-ms-transition: .2s all;
+}
+body > section .pageNav .nextPage {
+	margin-left: 8em;
+}
+body > section .pageNav .prevPage {
+	margin-right: 8em;
+}
+body > section .pageNav .nextPage:hover,
+body > section .pageNav .prevPage:hover {
+	background-color: #4CB0FF;
+}
+body > section .pageNav .nextPage:active,
+body > section .pageNav .prevPage:active {
+	position: relative;
+	top: 2px;
+}
+
+body > section aside {
+	position: absolute;
+	width: 25%;
+	right: 20px;
+	top: 20px;
+}
+body > section aside .module {
+	margin-top: 35px;
+}
+body > section aside .module li {
+	margin: 10px 0 10px 20px;
+}
+body > section aside .module li a {
+	font-size: 14px;
+	padding-left: 20px;
+	background: url(../images/article_icon_sprite.png) no-repeat 0 -85px;
+}
+body > section aside .module li a:hover {
+	text-decoration: underline;
+	color: #4CC1E7;
+}
+body > section aside .module h3 {
+	padding: 7px 0 7px 15px;
+	background: #f0f0f0;
+	border: 1px solid #e4e4e4;
+	font-size: 14px;
+}
+/* =footer */
+body > footer {
+	margin-top: 20px;
+	background: #e2e2e2;
+}
+body > footer .innerContainer {
+	padding: 12px 20px 15px 20px;
+}
+body > footer .innerContainer p {
+	font: 14px/1.5 Helvetica, Arial;
+	padding-left: 20px;
+}
+/* END 前台网站通用部分 */
+
+/* IE系列兼容性处理 */
+
+/* END IE系列兼容性处理 */
