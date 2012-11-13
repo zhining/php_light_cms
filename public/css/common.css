@@ -225,9 +225,10 @@ dd {
 /** Forms **/
 form {
 	clear: both;
-	margin-right: 20px;
+	/*margin-right: 20px;
 	padding: 0;
-	width: 95%;
+	width: 95%;*/
+	padding: 0.5%;
 }
 fieldset {
 	border: none;
@@ -277,11 +278,11 @@ form div.submit {
 label {
 	display: block;
 	font-size: 110%;
-	margin-bottom:3px;
+	margin-bottom: 10px;
 }
 input, textarea {
 	clear: both;
-	font-size: 140%;
+	font-size: 120%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
 	padding: 1%;
 	width:98%;
@@ -297,6 +298,26 @@ select[multiple=multiple] {
 option {
 	font-size: 120%;
 	padding: 0 3px;
+}
+input, select, textarea {
+	transition: 0.2s all;
+	-webkit-transition: 0.2s all;
+	-moz-transition: 0.2s all;
+	-ms-transition: 0.2s all;
+	border-radius: 3px; 
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
+	border: 1px solid #C5C5C5; 
+	width: 70%; 
+	padding: 0.8em 1em; 
+	color: #999; 
+	font-size: 100%;
+}
+input:focus, select:focus, textarea:focus {
+	border: 1px solid #BBDAFD !important;
+	outline-color:-moz-use-text-color !important;
+	outline-style:none !important;
+	outline-width:0 !important;
+	box-shadow: 0 0 10px rgba(103, 166, 217, .7) !important;;
 }
 input[type=checkbox] {
 	clear: left;
@@ -377,8 +398,6 @@ form .error-message {
 
 .success,
 .message,
-.cake-error,
-.cake-debug,
 .notice,
 p.error,
 .error-message {
@@ -405,7 +424,6 @@ p.error,
 }
 .success,
 .message,
-.cake-error,
 p.error,
 .error-message {
 	clear: both;
@@ -454,6 +472,11 @@ p.error em {
 }
 .success {
 	color: #fff;
+}
+.success .message {
+	background: none;
+	border: none;
+	margin: 2px;
 }
 
 /**  Actions  **/

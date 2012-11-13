@@ -5,13 +5,11 @@
 */
 class AppController extends spController
 {
-	function __construct()
+	public function __construct()
 	{
 
 		parent::__construct();
 		
-
-
 		/*
 		 * 末班变量
 		 **/
@@ -45,20 +43,27 @@ class AppController extends spController
 					  .$def_tpl_name.$def_tpl_type;
 	}
 
-}
 
-
-/**
-*  协助生成 HTML代码的类
-*/
-class HtmlHelper
-{
-
-	/*
-	 * 生成加载 CSS 或 JS 的 HTML 代码
-	 **/
-	public function load($path, $type)
+    // 判断请求方法, 'post', 'get'
+	public function is($value)
 	{
-		
+		if (strtolower($_SERVER['REQUEST_METHOD']) 
+				== strtolower($value)) {
+			return true;
+		}
+		return false;
 	}
+
+	// 跳转封装自 jump
+	public function redirect($url, $delay)
+	{
+		return $this->jump($url, $delay);
+	}
+
+	// 本页面更新友好提示
+	public function setFlash($value = '')
+	{
+		$this->flash = $value;
+	}
+	
 }

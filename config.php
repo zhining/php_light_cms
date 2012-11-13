@@ -7,6 +7,14 @@ define("PUBLIC_PATH", '/public');
 define('UPLOAD_PATH', PUBLIC_PATH.'/uploads');
 
 
+// 用户标识
+define('VISITOR', 'VISITOR');
+define('USER', 'USER');
+define('ADMIN', 'ADMIN');
+define('ROOT', 'ROOT');
+
+
+// 框架配置
 $spConfig = array(
 
 	'mode' => 'debug', // 应用程序模式，默认为调试模式
@@ -45,16 +53,21 @@ $spConfig = array(
 	'default_action' => 'index',  // 默认的动作名称
 
 	'url' => array(
-        'url_path_info' => TRUE, // 是否使用path_info方式的URL
+        'url_path_info' => FALSE, // 是否使用path_info方式的URL
         'url_path_base' => 'index.php', // URL的根目录访问地址
     ),
+    'launch' => array( 
+		'router_prefilter' => array( 
+		    array('spAcl','mincheck') // 开启有限的权限控制
+		)
+	),
 );
 
 
 require(SP_PATH."/SpeedPHP.php");
 
 import($GLOBALS['G_SP']['controller_path'].'/AppController.php');
-import($GLOBALS['G_SP']['model_path'].'/AppController.php');
+import($GLOBALS['G_SP']['model_path'].'/AppModel.php');
 
 
 

@@ -3,7 +3,12 @@
 // SpeedPHP中文PHP框架, Copyright (C) 2008 - 2010 SpeedPHP.com //
 /////////////////////////////////////////////////////////////////
 
-define("SPANONYMOUS","SPANONYMOUS"); // 无权限设置的角色名称
+/*
+ * 角色: VISITOR < USER < ADMIN < ROOT
+ **/
+
+
+define("VISITOR","VISITOR"); // 无权限设置的角色名称
 
 /**
  * 基于组的用户权限判断机制
@@ -119,7 +124,7 @@ class spAcl
  * 表结构：
  * CREATE TABLE acl
  * (
- * 	aclid int NOT NULL AUTO_INCREMENT,
+ * 	acl_id int NOT NULL AUTO_INCREMENT,
  * 	name VARCHAR(200) NOT NULL,
  * 	controller VARCHAR(50) NOT NULL,
  * 	action VARCHAR(50) NOT NULL,
@@ -130,7 +135,7 @@ class spAcl
 class spAclModel extends spModel
 {
 
-	public $pk = 'aclid';
+	public $pk = 'acl_id';
 	/**
 	 * 表名
 	 */
@@ -146,12 +151,12 @@ class spAclModel extends spModel
 	 * @param controller    控制器名称
 	 * @param action    动作名称
 	 */
-	public function check($acl_name = SPANONYMOUS, $controller, $action)
+	public function check($acl_name = VISITOR, $controller, $action)
 	{
 		$rows = array('controller' => $controller, 'action' => $action );
 		if( $acl = $this->findAll($rows) ){
 			foreach($acl as $v){
-				if($v["acl_name"] == SPANONYMOUS || $v["acl_name"] == $acl_name)return 1;
+				if($v["role"] == VISITOR || $v["role"] == $acl_name) return 1;
 			}
 			return 0;
 		}else{
