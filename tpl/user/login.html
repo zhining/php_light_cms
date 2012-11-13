@@ -1,0 +1,104 @@
+
+    <script type="text/javascript" src="<{$js_path}>/modernizr.js"></script>
+    <script type="text/javascript">
+        Modernizr.load({
+            load: '<{$js_path}>/jquery.js',
+            callback: function () {
+                $(function () {
+                    
+                    // 自动居中
+                    $(window).resize(function () {
+                        if ($(window).height() > $('#login_content').height()) {
+                            $('#login_content').css({
+                                'padding-top': ($(window).height()-$('#login_content').height())/3
+                            });
+                        }
+                    }).resize();                    
+                    
+                    // 修复不支持 placeholder 的浏览器
+                    if (!Modernizr.input.placeholder) {
+                        
+                        $('[placeholder]').not($('input:password')).focus(function() {
+                            var input = $(this);
+                            if (input.val() == input.attr('placeholder')) {
+                                input.val('');
+                                //input.removeClass('placeholder');
+                            }
+                        }).blur(function() {
+                            var input = $(this);
+                            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                                //input.addClass('placeholder');
+                                input.val(input.attr('placeholder'));
+                            }
+                        }).blur();
+                        
+                        $('[placeholder]').not($('input:password')).parents('form').submit(function() {
+                            $(this).find('[placeholder]').each(function() {
+                                var input = $(this);
+                                if (input.val() == input.attr('placeholder')) {
+                                    input.val('');
+                                }
+                            });
+                        });
+                        
+                        $('input:password').parent().append('<label class="placeholder" id="pwdPlaceholder" for="pwdInput">密码</label>');
+                        
+                        $('input:password').focus(function () {
+                            var input = $(this);
+                            input.parent().find('.placeholder').hide();
+                        }).blur(function () {
+                            var input  = $(this);
+                            if (input.val() == '') {
+                                input.parent().find('.placeholder').show();
+                            }
+                        });
+                        
+                    } 
+                    
+                });
+            }
+        });
+    </script>
+    <style>
+    body { background: #ccc; min-width: 420px;}
+    label { color: #777c7e; }
+    #login_wrapper { min-width: 400px; margin: 0 auto; position: relative; }
+    #login_wrapper h1 {  }
+    #login_wrapper #login_content { padding: 10px; }
+    #login_wrapper #login_content form { width: 350px; margin: 0 auto; padding: 2em 3em 2em 4em; background: #f7f9fa; box-shadow: 0 0 13px rgba(0, 0, 0, 0.1);  }
+    #login_wrapper #login_content div { padding: 0; }
+    #login_wrapper #login_content input[type=text], #login_wrapper #login_content input[type=password]{ border-radius: 3px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); border: 1px solid #dee4e7; width: 70%; padding: 0.8em 1em; color: #999; font-size: 100%;
+    }
+    #login_wrapper #login_content input[type=text]:first { margin: 0.5em 0; }
+    #login_wrapper #login_content input[type=submit] { padding: 0.5em 1em; font-size: 100%; margin-top: 1em; }
+    #login_wrapper #login_content input[type=checkbox] { position: relative; top: 3px;}
+    #login_wrapper #login_content span { float: right; padding-right: 7em;}
+    #login_wrapper #login_content label, #login_wrapper #login_content a { font-size: 0.625em; }
+    #login_wrapper .psdConatiner { position: relative; }
+    .placeholder { position: absolute; color: #999; left: 9px; top: 12px; z-index: 0; }
+    </style>
+	<div id="login_wrapper">
+        <div id="login_content">
+            <{include './common/flash.html'}>
+            <form action="<{spUrl c=user a=signin}>" method="post" class="action">
+                <div>
+                    <h1>用户登陆</h1>
+                </div>
+                <div>
+                    <input type="text" name="username" id="username" placeholder="账号" value="" />
+                </div>
+                <div class="psdConatiner">
+                    <input type="password" name="password" id="password" value="" placeholder="密码" />
+                    <!-- <label class="placeholder" id="pwdPlaceholder" for="pwdInput">密码</label> -->
+                </div>
+                <div>
+                    <span><a href="#">忘记密码？</a></span>
+                    <input type="checkbox" name="autoLogin" id="autoLogin"/>
+                    <label for="autoLogin">保持登陆</label>
+                </div>
+                <div>
+                    <input class="button green" type="submit" value="登陆"/>
+                </div>
+            </form>
+        </div>
+    </div>
