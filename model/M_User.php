@@ -23,15 +23,6 @@ class M_User extends AppModel
         'role' => 'role',   // 用户身份
     );
 
-    
-
-    /*
-     * 与 $this->fields 作比较，返回焦急
-     **/
-    public function fields_filter($array)
-    {
-        return array_intersect_key($array, $this->fields);
-    }
 
     // 我们定义自己的验证规则
     var $addrules = array(

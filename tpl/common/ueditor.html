@@ -11,8 +11,12 @@ Modernizr.load('<{$js_path}>/ueditor/themes/default/ueditor.css');
 			return;	
 		}
 		var initUEditor = function () {
-			var editor = new baidu.editor.ui.Editor();
-	    	editor.render("Editor");	
+			var editor = new baidu.editor.ui.Editor({
+			});
+	    	editor.render("Editor");
+	    	editor.ready(function(){
+	    		
+			})
 		};
 		if (typeof jQuery != 'undefined') {
 			jQuery(initUEditor);

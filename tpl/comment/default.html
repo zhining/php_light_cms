@@ -15,11 +15,10 @@
 <body>
 	<div id="conatiner">
 
-		<{include file='./admin/header.html'}>
-		<{include file='./admin/aside.html'}>
-		<section id="main">
-			<{include file=$actionFile}>
-		</section>
+		<form class="action" method="post" action="<{spUrl c=comment a=index}>">
+			<input type="text" name="body" />
+			<input type="submit">
+		</form>
 		
 	</div>
 </body>
