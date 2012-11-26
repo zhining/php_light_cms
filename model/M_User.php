@@ -16,8 +16,10 @@ class M_User extends AppModel
         'user_id' => 'user_id',  // 用户ID
         'username' => 'username', // 用户名
         'password' => 'password', // 密码
+        'confirm_password' => 'confirm_password',
         'email' => 'email',    // 电子邮件
         'url' => 'url',      // 个人主页
+        'nickname' => 'nickname',    // 呢称
         'created' => 'created',  // 创建时间
         'status' => 'status',   // 激活状态
         'role' => 'role',   // 用户身份
@@ -34,7 +36,7 @@ class M_User extends AppModel
         // 当然我们还可以定义更多的自定义规则
     );
 
-	var $verifier_register = array(
+	var $verifier_signup = array(  // 注册规则
         "rules" => array( // 规则
             'username' => array(  // 用户名
                 'notnull' => TRUE, // username不能为空
@@ -47,18 +49,39 @@ class M_User extends AppModel
             	'maxlength' => 20,
             ),
             'comfirm_password' => array(  // 这里是对第二次输入的密码的验证规则
-                'equalto' => 'password', // 要等于'password'，也就是要与上面的密码相等
+                //'equalto' => 'password', // 要等于'password'，也就是要与上面的密码相等
             ),
             'email' => array(   // 这里是对email的验证规则
-                'notnull' => TRUE, // email不能为空
+                'notnull' => TRUE,
                 'email' => TRUE,   // 必须要是电子邮件格式
                 'minlength' => 8,  // email长度不能小于8
                 'maxlength' => 20, // email长度不能大于20
             ),
         ),
+        "messages" => array(
+            'username' => array(
+                'notnull' => "用户名不能为空",
+                'minlength' => "用户名不能少于3个字符",
+                'maxlength' => "用户名不能大于20个字符",
+            ),
+            'password' => array(
+                'notnull' => "密码不能为空",
+                'minlength' => "密码不能少于3个字符",
+                'maxlength' => "密码不能大于20个字符",
+            ),
+            'comfirm_password' => array(  // 这里是对第二次输入的密码的验证规则
+                'equalto' => '二个密码不相符', // 要等于'password'，也就是要与上面的密码相等
+            ),
+            'email' => array(
+                'notnull' => '邮箱不能为空',
+                'email' => '必须要是电子邮件格式',   // 必须要是电子邮件格式
+                'minlength' => 'email长度不能小于8',  // email长度不能小于8
+                'maxlength' => 'email长度不能大于20', // email长度不能大于20
+            ),
+        )
     );
 
-    var $verifier_signup = array(
+    var $verifier_signin = array(   // 登陆规则
         "rules" => array( // 规则
             'username' => array(  // 这里是对username的验证规则
                 'notnull' => TRUE, // username不能为空
@@ -86,5 +109,9 @@ class M_User extends AppModel
 
     );
 
-    
+    // 权限不足跳转
+    public function acljump()
+    {
+        header('location:'.spUrl('User', 'signin'));
+    }
 }

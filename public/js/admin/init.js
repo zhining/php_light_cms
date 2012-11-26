@@ -63,6 +63,7 @@ $(document).ready(function() {
 $(window).resize(function () {
     $('.column').equalHeight();
 });
+$(window).resize();
 
 (function ($) {
 

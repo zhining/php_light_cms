@@ -9,6 +9,9 @@
 
 
 define("VISITOR","VISITOR"); // 无权限设置的角色名称
+define('USER', 'USER');	// 普通用户
+define('ADMIN', 'ADMIN');	// 管理员
+define('ROOT', 'ROOT');	// 超级管理员
 
 /**
  * 基于组的用户权限判断机制
@@ -141,6 +144,13 @@ class spAclModel extends spModel
 	 */
 	public $table = 'acl';
 
+	public $aclRank = array(
+		'ROOT' => '1000',
+		'ADMIN' => '100',
+		'USER' => '10',
+		'VISITOR' => '1'
+	);
+
 	/**
 	 * 检查对应的权限
 	 *
@@ -156,7 +166,15 @@ class spAclModel extends spModel
 		$rows = array('controller' => $controller, 'action' => $action );
 		if( $acl = $this->findAll($rows) ){
 			foreach($acl as $v){
-				if($v["role"] == VISITOR || $v["role"] == $acl_name) return 1;
+				// 如果是VISITOR 直接放行
+				// 如果身份相同 放行
+				// 如果身份等级更高 放行
+				if($v["role"] == VISITOR ||
+				   $v["role"] == $acl_name ||
+				   $this->aclRank[$acl_name] >= $this->aclRank[$v['role']]) {
+					return 1;	
+				}
+				
 			}
 			return 0;
 		}else{

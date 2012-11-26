@@ -1,17 +1,17 @@
 
 	<header id="header">
 		<hgroup>
-			<h1 class="site_title"><a href="<{spUrl c=Post a=index}>">后台管理</a></h1>
+			<h1 class="site_title"><a href="<{spUrl c=post a=admin_index}>">后台管理</a></h1>
 			<h2 class="section_title"><{$layout_title}></h2><div class="btn_view_site"><a href="<{spUrl c=main a=index}>">网站前台</a></div>
 		</hgroup>
 	</header> <!-- end of header bar -->
 	
 	<section id="secondary_bar">
 		<div class="user">
-			<p>管理员 <!--(<a href="#"><{$num}> Messages</a>)--></p>
+			<p><{$currentUser.nickname}> <!--(<a href="#"><{$num}> Messages</a>)--></p>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="<{spUrl c=Manage a=index}>">后台管理</a> <div class="breadcrumb_divider"></div> <a href="<{$current_url}>" class="current"><{$current_url_text}></a></article>
+			<article class="breadcrumbs"><a href="<{spUrl c=post a=admin_index}>">后台管理</a> <div class="breadcrumb_divider"></div> <a href="<{$current_url}>" class="current"><{$current_url_text}></a></article>
 		</div>
 	</section><!-- end of secondary bar -->

@@ -11,6 +11,12 @@
 		<textarea name="excerpt" col="3"><{$post['excerpt']}></textarea>
 	</div>
 	<div>
+		<select name="category_id" id="category_id">
+			<{$categoryOption}>
+		</select>
+		<input type="hidden" data-category-id="<{$category_id}>" id="currentCategoryId">
+	</div>
+	<div>
 		<textarea id="Editor" name="body"><{$post['body']}></textarea>
 	</div>
 	<div>
@@ -19,3 +25,14 @@
 </form>
 
 <{include './common/ueditor.html'}>
+
+<script type="text/javascript">
+$(function () {
+	var currentCategoryId = $('#currentCategoryId').attr('data-category-id');
+	$('#category_id option').each(function  () {
+		if ($(this).val() == currentCategoryId) {
+			$(this).attr('selected', 'selected');
+		};
+	})
+})
+</script>

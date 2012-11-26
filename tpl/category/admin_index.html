@@ -1,0 +1,194 @@
+<div class="module">
+	<ul class="categoryList">
+	<{foreach item=item from=$categories key=keyname name=thearr1}>
+	<li><a href="#" data-category-id="<{$item.category_id}>" data-parent-id="<{$item.parent_id}>" data-category-name="<{$item.name}>"><{$item.name}></a></li>
+	<{/foreach}>
+	</ul>
+	<div id="categories"></div>
+	<form action="<{spUrl c=category a=admin_add}>" method="post" style="padding: 40px;">
+		<div>
+			<label name="name">增加栏目</label>
+			<input type="text" name="name" id="name" />
+		</div>
+		<div>
+			<select name="parent_id">
+				<option data-parent-id="" data-category-id="" value="">根目录</option>
+				<{$categoryOption}>
+			</select>
+		</div>
+		<div>
+			<select name="type">
+				<option value="post">文章</option>
+			</select>
+		</div>
+		<div>
+			<input type="submit" value="添加">
+		</div>
+	</form>
+	
+	
+	<script type="text/javascript" src="<{$js_path}>/admin/jquery.tree.js"></script>
+	<script type="text/javascript">
+	$(function () {
+
+		var $categories = $('.categoryList');
+		var datas = [];
+		var title = "";
+		var subUrl = "<{spUrl c=category a=admin_ajax_str_delete}>";
+		var editUrl = "<{spUrl c=category a=admin_ajax_str_edit}>";
+
+		$categories.find('a').each(function (i) {
+			var $this = $(this);
+			var category_id = $this.attr('data-category-id');
+			var parent_id = $this.attr('data-parent-id');
+			var name = $this.attr('data-category-name');
+			datas.push({
+				"label": name,
+				"id": category_id,
+				"parent_id": parent_id
+			});
+		});
+
+		$('#main #categories').tree(datas);
+		$('.categoryList').hide();
+
+		$('#main #categories').find('a').each(function () {
+
+			var $_this = $(this);
+			var editStr = "<a class='edit_category' " + " data-id='" + $_this.attr('data-id') + 
+							"' data-name='" + $_this.text() + "' href='javascript:void(0)'>编辑</a>" + 
+						  "<a class='delete_category' " + " data-id='" + $_this.attr('data-id') + 
+							"' data-name='" + $_this.text() + "' href='javascript:void(0)'>删除</a>"
+			var $editStr = $(editStr);
+			$_this.after($editStr);
+		});
+
+		$('.delete_category').click(function (e) {
+			e.preventDefault();
+			var $this = $(this);
+			title = $this.parent().find('a').first().text();
+			if (confirm('确定删除栏目 "' + title + '"?')) {
+				$.post(subUrl, {
+					'category_id' : $(this).attr('data-id')
+				}, function (data) {
+					if (data == 1) {	// 删除成功
+						$this.parent().hide(500);
+						var message = '<div class="success" style="width: 80%; margin: 1em;"><h1 class="message">成功删除</h1></div>'
+						$('#main .module').prepend($(message));
+						$('#main .module .success').delay(6000).remove();
+					}
+				});
+			}
+			return false;
+		});
+
+		var editFlag = false;
+		var orginText = "";
+		var editObject = null;
+		$('.edit_category').click(function (e) {
+			var $this = editObject = $(this);
+			e.preventDefault();
+			orginText = $(this).text();
+			editFlag = true;
+			if (editFlag) {
+				
+				var input = document.createElement('input');
+				input.setAttribute('type', 'text');
+				input.setAttribute('name', 'name');
+				input.setAttribute('value', $this.attr('data-name'));
+				
+				var link = document.createElement('a');
+				link.setAttribute('href', 'javascript:void(0);');
+				link.setAttribute('class', 'save_category');
+				link.innerHTML = '保存';
+
+				$this.before($(input));		// 添加文本框
+				$this.before($(link));		// 添加“保存”链接
+
+				$this.hide();
+
+				$this.parent().find('.save_category').click(function (e) {
+
+					var _this = $(this);
+
+					var categoryName = _this.parent().find('input:text').val();
+
+					// 如果内容没有改变
+					if (categoryName == $this.attr('data-name')) {
+
+						_this.parent().find('input:text').remove();	// 删除文本框
+						_this.remove();	// 删除“保存”链接
+						$this.show();	// 显示“编辑”链接
+
+						return false;
+					};
+
+
+					$.post(editUrl, {
+						'category_id' : $this.attr('data-id'),
+						'name' : categoryName
+					}, function (data) {
+						console.log(data);	
+						if (data == "1") {	// 修改成功
+							$this.prev().text(categoryName);
+							$this.prev().attr('data-name', categoryName);
+							$this.attr('data-name', categoryName);
+
+							var message = '<div class="success" style="width: 80%; margin: 1em;"><h1 class="message">成功删除</h1></div>'
+							$('#main .module').prepend($(message));
+						};
+					});
+
+					_this.parent().find('input:text').remove();	// 删除文本框
+					_this.remove();	// 删除“保存”链接
+
+					$this.show();	// 显示“编辑”链接
+				});
+
+			}
+			
+			return false;
+		});
+	})
+	</script>
+</div>
+<style type="text/css">
+section#main #categories ul {
+
+}
+section#main #categories ul li {
+	margin: 2.5em 1.5em;
+}
+section#main #categories ul ul {
+	margin: 0 3em;
+}
+section#main #categories ul li a {
+	padding: 0.5em 1em;
+	background: #F7F7F7;
+	border: 1px solid #B9B9B9;
+	border-radius: 2px;
+	display: inline;
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+}
+section#main #categories ul li input[type=text] {
+	width: 100px;
+	margin-left: 30px;
+	height: 80%;
+}
+
+section#main #categories ul li a.edit_category,
+section#main #categories ul li a.delete_category,
+section#main #categories ul li a.save_category {
+	padding: 0;
+	margin-left: 30px;
+	border: none;
+	display: inline;
+	box-shadow: none;
+}
+section#main #categories ul li img {
+	position: relative;
+	top: 8px;
+	padding-left: 5px;
+	cursor: pointer;
+}
+</style>

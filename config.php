@@ -2,7 +2,7 @@
 
 define("APP_PATH",dirname(__FILE__));
 define("SP_PATH",dirname(__FILE__).'/SpeedPHP');
-define("TPL_PATH", dirname(__FILE__).'/tpl');
+define("TPL_PATH", '/tpl');
 define("PUBLIC_PATH", '/public');
 define('UPLOAD_PATH', PUBLIC_PATH.'/uploads');
 
@@ -61,6 +61,11 @@ $spConfig = array(
 		    array('spAcl','mincheck') // 开启有限的权限控制
 		)
 	),
+	'ext' => array( // 扩展设置
+        'spAcl' => array( // acl扩展设置
+                'prompt' => array("M_User", "acljump"),
+        ), 
+	)
 );
 
 
@@ -69,24 +74,22 @@ require(SP_PATH."/SpeedPHP.php");
 import($GLOBALS['G_SP']['controller_path'].'/AppController.php');
 import($GLOBALS['G_SP']['model_path'].'/AppModel.php');
 
-
-
-
 // 更新控制器和动作的记录
-if (!isset($_SESSION['cur_controller'])) {	// 如果是第一次访问
-    $_SESSION['cur_controller'] = $__controller;
-    $_SESSION['cur_action'] = $action;
+if (!isset($_SESSION['currentController'])) {	// 如果是第一次访问
+    $_SESSION['currentController'] = $__controller;
+    $_SESSION['currentAction'] = $action;
 
-	$_SESSION['pre_controller'] = $__action;
-	$_SESSION['pre_action'] = $__controller;
+	$_SESSION['previousController'] = $__action;
+	$_SESSION['previoustAction'] = $__controller;
 
 } else {	// 第二次访问
-    $_SESSION['pre_controller'] = $_SESSION['cur_controller'];
-	$_SESSION['pre_action'] = $_SESSION['cur_action'];
+    $_SESSION['previousController'] = $_SESSION['currentController'];
+	$_SESSION['previoustAction'] = $_SESSION['currentAction'];
 }
 
 // 记录当前控制器和动作
-$_SESSION['cur_action'] = $__action;
-$_SESSION['cur_controller'] = $__controller;
+$_SESSION['currentAction'] = $__action;
+$_SESSION['currentController'] = $__controller;
 
-
+// 设定要用的默认时区。自 PHP 5.1 可用
+date_default_timezone_set('PRC');

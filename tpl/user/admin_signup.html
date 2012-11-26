@@ -1,0 +1,44 @@
+<link rel="stylesheet" type="text/css" href="<{$css_path}>/admin_layout.php">
+<script src="<{$js_path}>/jquery.js"></script>
+<script src="<{$js_path}>/admin/jquery-ui-1.8.20.custom.min.js"></script>
+<script src="<{$js_path}>/admin/jquery.tablesorter.min.js"></script>
+<script src="<{$js_path}>/admin/jquery.equalHeight.js"></script>
+<script src="<{$js_path}>/admin/init.js"></script>
+
+<{include file='./admin/header.html'}>
+
+<{include file='./admin/aside.html'}>
+
+
+<section id="main">
+	<{include file='./common/success_flash.html'}>
+	<form class="action" method="post" action="<{spUrl c=user a=admin_signup}>">
+		<div>
+			<label name="username">用户名</label>
+			<input type="text" name="username">
+		</div>
+		<div>
+			<label name="password">密码</label>
+			<input type="password" name="password">
+		</div>
+		<div>
+			<label name="password">确认密码</label>
+			<input type="password" name="confirm_password">
+		</div>
+		<div>
+			<label name="email">邮箱</label>
+			<input type="text" name="email">
+		</div>
+		<div>
+			<label name="url">主页</label>
+			<input type="text" name="url">
+		</div>
+		<div>
+			<label name="nickname">呢称</label>
+			<input type="text" name="nickname">
+		</div>
+		<div>
+ 			<input type="submit" value="保存">
+		</div>
+	</form>
+</section>

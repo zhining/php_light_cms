@@ -1,3 +1,7 @@
+<?php
+header('Content-type: text/css');
+?>
+
 /* Essentials */
 html,div,map,dt,isindex,form,header,aside,section,section,article,footer {
 	display: block;
@@ -37,7 +41,7 @@ li {
 header#header {
 	height: 55px;
 	width: 100%;
-	background: #222222 url(../images/header_bg.png) repeat-x;
+	background: #222222 url(../images/admin/header_bg.png) repeat-x;
 }
 header#header h1.site_title,header#header h2.section_title {
 	float: left;
@@ -62,7 +66,7 @@ header#header h2.section_title {
 	text-align: center;
 	text-indent: 4.5%;
 	width: 68%;
-	background: url(../images/header_shadow.png) no-repeat left top;
+	background: url(../images/admin/header_shadow.png) no-repeat left top;
 }
 .btn_view_site {
 	float: left;
@@ -73,7 +77,7 @@ header#header h2.section_title {
 	margin-top: 12px;
 	width: 91px;
 	height: 27px;
-	background: url(../images/btn_view_site.png) no-repeat;
+	background: url(../images/admin/btn_view_site.png) no-repeat;
 	text-align: center;
 	line-height: 29px;
 	color: #fff;
@@ -87,7 +91,7 @@ header#header h2.section_title {
 section#secondary_bar {
 	height: 38px;
 	width: 100%;
-	background: #F1F1F4 url(../images/secondary_bar.png) repeat-x;
+	background: #F1F1F4 url(../images/admin/secondary_bar.png) repeat-x;
 }
 section#secondary_bar .user {
 	float: left;
@@ -106,7 +110,7 @@ section#secondary_bar .user {
 	line-height: 35px;
 	text-indent: 25px;
 	text-shadow: 0 1px 0 #fff;
-	background: url(../images/icn_user.png) no-repeat center left;
+	background: url(../images/admin/icn_user.png) no-repeat center left;
 	margin-left: 6%;
 }
 .user a {
@@ -122,13 +126,13 @@ section#secondary_bar .user {
 	width: 16px;
 	height: 35px;
 	text-indent: -5000px;
-	background: url(../images/icn_logout.png) center no-repeat;
+	background: url(../images/admin/icn_logout.png) center no-repeat;
 }
 /* Breadcrumbs */
 section#secondary_bar .breadcrumbs_container {
 	float: left;
 	width: 80%;
-	background: url(../images/secondary_bar_shadow.png) no-repeat left top;
+	background: url(../images/admin/secondary_bar_shadow.png) no-repeat left top;
 	height: 38px;
 }
 article.breadcrumbs {
@@ -169,14 +173,14 @@ article.breadcrumbs {
 	display: inline-block;
 	width: 12px;
 	height: 24px;
-	background: url(../images/breadcrumb_divider.png) no-repeat;
+	background: url(../images/admin/breadcrumb_divider.png) no-repeat;
 	float: left;
 	margin: 0 5px;
 }
 /* Sidebar */
 aside#sidebar {
 	width: 20%;
-	background: #E0E0E3 url(../images/sidebar.png) repeat;
+	background: #E0E0E3 url(../images/admin/sidebar.png) repeat;
 	float: left;
 	min-height: 500px;
 	margin-top: -4px;
@@ -184,7 +188,7 @@ aside#sidebar {
 #sidebar hr {
 	border: none;
 	outline: none;
-	background: url(../images/sidebar_divider.png) repeat-x;
+	background: url(../images/admin/sidebar_divider.png) repeat-x;
 	display: block;
 	width: 100%;
 	height: 2px;
@@ -208,7 +212,7 @@ aside#sidebar footer {
 	-moz-box-shadow: inset 0 2px 2px #ccc,0 1px 0 #fff;
 	box-shadow: inset 0 2px 2px #ccc,0 1px 0 #fff;
 	text-indent: 30px;
-	background: #fff url(../images/icn_search.png) no-repeat;
+	background: #fff url(../images/admin/icn_search.png) no-repeat;
 	background-position: 10px 6px;
 	padding-left: 15px;
 }
@@ -268,46 +272,46 @@ aside#sidebar footer {
 }
 /* Sidebar Icons */
 li.icn_new_article a {
-	background: url(../images/icn_new_article.png) no-repeat center left;
+	background: url(../images/admin/icn_new_article.png) no-repeat center left;
 }
 li.icn_edit_article a {
-	background: url(../images/icn_edit_article.png) no-repeat center left;
+	background: url(../images/admin/icn_edit_article.png) no-repeat center left;
 }
 li.icn_categories a {
-	background: url(../images/icn_categories.png) no-repeat center left;
+	background: url(../images/admin/icn_categories.png) no-repeat center left;
 }
 li.icn_tags a {
-	background: url(../images/icn_tags.png) no-repeat center left;
+	background: url(../images/admin/icn_tags.png) no-repeat center left;
 }
 li.icn_add_user a {
-	background: url(../images/icn_add_user.png) no-repeat center left;
+	background: url(../images/admin/icn_add_user.png) no-repeat center left;
 }
 li.icn_view_users a {
-	background: url(../images/icn_view_users.png) no-repeat center left;
+	background: url(../images/admin/icn_view_users.png) no-repeat center left;
 }
 li.icn_profile a {
-	background: url(../images/icn_profile.png) no-repeat center left;
+	background: url(../images/admin/icn_profile.png) no-repeat center left;
 }
 li.icn_folder a {
-	background: url(../images/icn_folder.png) no-repeat center left;
+	background: url(../images/admin/icn_folder.png) no-repeat center left;
 }
 li.icn_photo a {
-	background: url(../images/icn_photo.png) no-repeat center left;
+	background: url(../images/admin/icn_photo.png) no-repeat center left;
 }
 li.icn_audio a {
-	background: url(../images/icn_audio.png) no-repeat center left;
+	background: url(../images/admin/icn_audio.png) no-repeat center left;
 }
 li.icn_video a {
-	background: url(../images/icn_video.png) no-repeat center left;
+	background: url(../images/admin/icn_video.png) no-repeat center left;
 }
 li.icn_settings a {
-	background: url(../images/icn_settings.png) no-repeat center left;
+	background: url(../images/admin/icn_settings.png) no-repeat center left;
 }
 li.icn_security a {
-	background: url(../images/icn_security.png) no-repeat center left;
+	background: url(../images/admin/icn_security.png) no-repeat center left;
 }
 li.icn_jump_back a {
-	background: url(../images/icn_jump_back.png) no-repeat center left;
+	background: url(../images/admin/icn_jump_back.png) no-repeat center left;
 }
 #sidebar p {
 	color: #666666;
@@ -329,7 +333,7 @@ li.icn_jump_back a {
 section#main {
 	width: 80%;
 	min-height: 500px;
-	background: url(../images/sidebar_shadow.png) repeat-y left top;
+	background: url(../images/admin/sidebar_shadow.png) repeat-y left top;
 	float: left;
 	margin-top: -2px;
 
@@ -361,7 +365,7 @@ section#main {
 .module header {
 	height: 38px;
 	width: 100%;
-	background: #F1F1F4 url(../images/secondary_bar.png) repeat-x;
+	background: #F1F1F4 url(../images/admin/secondary_bar.png) repeat-x;
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
 	-moz-border-radius-topleft: 5px;
@@ -373,7 +377,7 @@ section#main {
 	height: 32px;
 	width: 100%;
 	border-top: 1px solid #9CA1B0;
-	background: #F1F1F4 url(../images/module_footer_bg.png) repeat-x;
+	background: #F1F1F4 url(../images/admin/module_footer_bg.png) repeat-x;
 	-webkit-border-bottom-left-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px;
 	-moz-border-radius-bottomleft: 5px;
@@ -459,7 +463,7 @@ section#main {
 }
 .tablesorter thead tr {
 	height: 34px;
-	background: url(../images/table_sorter_header.png) repeat-x;
+	background: url(../images/admin/table_sorter_header.png) repeat-x;
 	text-align: left;
 	text-indent: 10px;
 	cursor: pointer;
@@ -709,7 +713,7 @@ fieldset textarea: focus {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	background: #B5E5EF url(../images/icn_alert_info.png) no-repeat;
+	background: #B5E5EF url(../images/admin/icn_alert_info.png) no-repeat;
 	background-position: 10px 10px;
 	border: 1px solid #77BACE;
 	color: #082B33;
@@ -725,7 +729,7 @@ fieldset textarea: focus {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	background: #F5F3BA url(../images/icn_alert_warning.png) no-repeat;
+	background: #F5F3BA url(../images/admin/icn_alert_warning.png) no-repeat;
 	background-position: 10px 10px;
 	border: 1px solid #C7A20D;
 	color: #796616;
@@ -741,7 +745,7 @@ fieldset textarea: focus {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	background: #F3D9D9 url(../images/icn_alert_error.png) no-repeat;
+	background: #F3D9D9 url(../images/admin/icn_alert_error.png) no-repeat;
 	background-position: 10px 10px;
 	border: 1px solid #D20009;
 	color: #7B040F;
@@ -757,7 +761,7 @@ fieldset textarea: focus {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	background: #E2F6C5 url(../images/icn_alert_success.png) no-repeat;
+	background: #E2F6C5 url(../images/admin/icn_alert_success.png) no-repeat;
 	background-position: 10px 10px;
 	border: 1px solid #79C20D;
 	color: #32510F;

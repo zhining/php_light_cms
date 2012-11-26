@@ -1,3 +1,4 @@
+<{include './common/success_flash.html'}>
 <form class="action" method="post" action="<{spUrl c=post a=admin_add}>">
 	<div>
 		<label>标题</label>
@@ -6,6 +7,11 @@
 	<div>
 		<label>摘录</label>
 		<textarea name="excerpt" col="3"></textarea>
+	</div>
+	<div>
+		<select name="category_id">
+			<{$categoryOption}>
+		</select>
 	</div>
 	<div>
 		<textarea id="Editor" name="body">&nbsp;&nbsp;</textarea>
